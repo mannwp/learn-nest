@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CrudModule } from './crud/crud.module';
 import { CatController } from './cat/cat.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TodosModule } from './todos/todos.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    CrudModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
@@ -25,6 +25,8 @@ import { TodosModule } from './todos/todos.module';
       }),
     }),
     TodosModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController, CatController],
   providers: [AppService],

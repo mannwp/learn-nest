@@ -33,7 +33,7 @@ export class TodosService {
     return { deleted: true };
   }
   async removeAll() {
-    await this.repo.updateAll({ isDeleted: false });
+    await this.repo.updateAll({ isDeleted: true });
     return { deleted: true };
   }
 }

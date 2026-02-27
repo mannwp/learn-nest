@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
 import { Todo } from '../todos/todo.entity';
-import { Crud } from '../crud/entities/crud.entity';
+import { User } from 'src/users/user.entity';
 
 config();
 
@@ -15,7 +15,7 @@ export default new DataSource({
   username: configService.get<string>('DB_USER'),
   password: configService.get<string>('DB_PASS'),
   database: configService.get<string>('DB_NAME'),
-  entities: [Todo, Crud],
+  entities: [Todo, User],
   migrations: [__dirname + '/migrations/*{.ts,.js}'],
   synchronize: false,
 });
